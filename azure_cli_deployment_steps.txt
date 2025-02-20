@@ -1,0 +1,19 @@
+1.Install Azure CLI: Download and install Azure CLI, then log in using az login.
+
+2.Set Up a Resource Group: Create a resource group with az group create --name flaskapp-rg --location eastus.
+
+3.Create an App Service Plan: Set up a hosting environment using az appservice plan create --name flaskapp-plan --resource-group flaskapp-rg --sku F1.
+
+4.Create Your Web App: Deploy a Flask app by running az webapp create --name flaskapp-api --resource-group flaskapp-rg --plan flaskapp-plan --runtime "PYTHON:3.9".
+
+5.Prepare Your Project: Ensure your app has requirements.txt and a run.py or app.py file with app = Flask(__name__).
+
+6.Compress Your App: Zip your app files into a .zip file using zip -r flaskapp.zip . (exclude venv).
+
+7.Deploy Your App: Use az webapp deploy --resource-group flaskapp-rg --name flaskapp-api --src-path flaskapp.zip to deploy your app.
+
+8.Set Configuration Variables (Optional): Add environment variables using az webapp config appsettings set --name flaskapp-api --resource-group flaskapp-rg --settings KEY=VALUE.
+
+9.Test Your App: Access your app at https://flaskapp-api.azurewebsites.net, replacing flaskapp-api with your app name.
+
+10.Troubleshoot Issues: Check logs for debugging with az webapp log tail --resource-group flaskapp-rg --name flaskapp-api.
